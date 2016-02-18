@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.wengyingjian.weixin.common.model.User;
+import com.wengyingjian.turing.common.model.User;
 import com.wengyingjian.weixin.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;

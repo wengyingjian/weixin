@@ -1,9 +1,9 @@
 package com.wengyingjian.weixin.controller;
 
 import com.wengyingjian.kylin.util.XmlUtil;
-import com.wengyingjian.weixin.common.enums.MessageType;
-import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
-import com.wengyingjian.weixin.common.model.WeixinSubscribeEventMessage;
+import com.wengyingjian.turing.common.enums.MessageType;
+import com.wengyingjian.turing.common.model.WeixinRequstTextMessage;
+import com.wengyingjian.turing.common.model.WeixinSubscribeEventMessage;
 import com.wengyingjian.weixin.service.EventMessageService;
 import com.wengyingjian.weixin.service.TextMessageService;
 import com.wengyingjian.weixin.service.SignatureService;

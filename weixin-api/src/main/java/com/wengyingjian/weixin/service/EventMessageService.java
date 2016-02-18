@@ -2,9 +2,9 @@ package com.wengyingjian.weixin.service;
 
 import com.wengyingjian.kylin.util.JsonUtil;
 import com.wengyingjian.kylin.util.XmlUtil;
-import com.wengyingjian.weixin.common.enums.SubscribeType;
-import com.wengyingjian.weixin.common.model.WeixinResponseTextMessage;
-import com.wengyingjian.weixin.common.model.WeixinSubscribeEventMessage;
+import com.wengyingjian.turing.common.enums.SubscribeType;
+import com.wengyingjian.turing.common.model.WeixinResponseTextMessage;
+import com.wengyingjian.turing.common.model.WeixinSubscribeEventMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

@@ -2,12 +2,12 @@ package com.wengyingjian.weixin.service;
 
 import com.wengyingjian.kylin.util.JsonUtil;
 import com.wengyingjian.kylin.util.XmlUtil;
-import com.wengyingjian.weixin.common.enums.MessageType;
-import com.wengyingjian.weixin.common.model.TuringRequestMessage;
-import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
-import com.wengyingjian.weixin.common.model.WeixinResponseImageMessage;
-import com.wengyingjian.weixin.common.model.generic.WeixinResponseGeneralMessage;
-import com.wengyingjian.weixin.common.model.WeixinResponseTextMessage;
+import com.wengyingjian.turing.common.enums.MessageType;
+import com.wengyingjian.turing.common.model.TuringRequestMessage;
+import com.wengyingjian.turing.common.model.WeixinRequstTextMessage;
+import com.wengyingjian.turing.common.model.WeixinResponseImageMessage;
+import com.wengyingjian.turing.common.model.generic.WeixinResponseGeneralMessage;
+import com.wengyingjian.turing.common.model.WeixinResponseTextMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

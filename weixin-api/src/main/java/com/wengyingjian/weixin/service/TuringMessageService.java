@@ -1,9 +1,9 @@
 package com.wengyingjian.weixin.service;
 
-import com.wengyingjian.weixin.common.enums.TuringResponseType;
-import com.wengyingjian.weixin.common.model.*;
-import com.wengyingjian.weixin.common.model.generic.TuringResponseGereralMessage;
-import com.wengyingjian.weixin.common.service.TuringService;
+import com.wengyingjian.turing.common.enums.TuringResponseType;
+import com.wengyingjian.turing.common.model.*;
+import com.wengyingjian.turing.common.model.generic.TuringResponseGereralMessage;
+import com.wengyingjian.turing.common.service.TuringService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

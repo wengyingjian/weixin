@@ -5,9 +5,9 @@ import com.wengyingjian.kylin.common.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import com.wengyingjian.weixin.common.enums.UserType;
-import com.wengyingjian.weixin.common.model.User;
-import com.wengyingjian.weixin.common.model.query.UserQuery;
+import com.wengyingjian.turing.common.enums.UserType;
+import com.wengyingjian.turing.common.model.User;
+import com.wengyingjian.turing.common.model.query.UserQuery;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private com.wengyingjian.weixin.common.service.UserService userServiceRpc;
+    private com.wengyingjian.turing.common.service.UserService userServiceRpc;
 
     /**
      * 列出指定类型的所有用户

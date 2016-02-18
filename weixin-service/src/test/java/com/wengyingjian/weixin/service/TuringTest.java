@@ -1,8 +1,8 @@
 package com.wengyingjian.weixin.service;
 
 import com.wengyingjian.kylin.util.JsonUtil;
-import com.wengyingjian.weixin.common.model.TuringRequestMessage;
-import com.wengyingjian.weixin.common.service.TuringService;
+import com.wengyingjian.turing.common.model.TuringRequestMessage;
+import com.wengyingjian.turing.common.service.TuringService;
 import com.wengyingjian.weixin.service.impl.TuringServiceImpl;
 import org.junit.Test;
 

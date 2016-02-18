@@ -1,8 +1,8 @@
 package com.wengyingjian.weixin.util;
 
 import com.wengyingjian.kylin.util.XmlUtil;
-import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
-import com.wengyingjian.weixin.common.model.WeixinResponseImageMessage;
+import com.wengyingjian.turing.common.model.WeixinRequstTextMessage;
+import com.wengyingjian.turing.common.model.WeixinResponseImageMessage;
 import org.junit.Test;
 
 /**

@@ -1,7 +1,7 @@
 package com.wengyingjian.weixin.dao;
 
-import com.wengyingjian.weixin.common.model.User;
-import com.wengyingjian.weixin.common.model.query.UserQuery;
+import com.wengyingjian.turing.common.model.User;
+import com.wengyingjian.turing.common.model.query.UserQuery;
 import com.wengyingjian.weixin.dao.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

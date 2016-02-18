@@ -1,7 +1,7 @@
 package com.wengyingjian.weixin.dao.mapper;
 
-import com.wengyingjian.weixin.common.model.User;
-import com.wengyingjian.weixin.common.model.query.UserQuery;
+import com.wengyingjian.turing.common.model.User;
+import com.wengyingjian.turing.common.model.query.UserQuery;
 
 import java.util.List;
 

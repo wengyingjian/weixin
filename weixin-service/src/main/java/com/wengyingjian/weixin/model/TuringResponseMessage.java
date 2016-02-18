@@ -1,6 +1,6 @@
 package com.wengyingjian.weixin.model;
 
-import com.wengyingjian.weixin.common.model.generic.TuringResponseGereralMessage;
+import com.wengyingjian.turing.common.model.generic.TuringResponseGereralMessage;
 
 import java.util.List;
 

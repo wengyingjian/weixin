@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <group>
+        <property name="turing.url" defaultValue="http://www.tuling123.com/openapi/api" description="turing url" />
+        <property name="turing.key"  description="turing key" />
+    </group>
+
+    <script>
+        <generate template="application.properties.vm" destfile="WEB-INF/classes/application.properties" />
+    </script>
+</config>

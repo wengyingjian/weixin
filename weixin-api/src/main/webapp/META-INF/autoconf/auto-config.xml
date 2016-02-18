@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <group>
-        <property name="service.base.url" defaultValue="http://localhost:8080/a" description="service url" />
+        <property name="service.weixin.url" defaultValue="http://localhost:8080/a" description="weixin service url" />
+        <property name="service.turing.url"  description="turing service url" />
         <property name="weixin.token" description="weixin token" />
         <property name="shop.orange.url"  description="shop.orange.url"  />
         <property name="weixin.subscribe.welcome"  description="weixin.subscribe.welcome"  />

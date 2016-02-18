@@ -1,4 +1,5 @@
-service.base.url=${service.base.url}
+service.weixin.url=${service.weixin.url}
+service.turing.url=${service.turing.url}
 weixin.token=${weixin.token}
 shop.orange.url=${shop.orange.url}
 weixin.subscribe.welcome=${weixin.subscribe.welcome}

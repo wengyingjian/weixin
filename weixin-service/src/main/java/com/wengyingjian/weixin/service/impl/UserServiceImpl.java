@@ -4,10 +4,9 @@ import com.wengyingjian.kylin.common.model.Result;
 import com.wengyingjian.kylin.common.utils.ResultUtil;
 import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
 import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
-import com.wengyingjian.weixin.common.enums.UserType;
-import com.wengyingjian.weixin.common.model.User;
-import com.wengyingjian.weixin.common.model.query.UserQuery;
-import com.wengyingjian.weixin.common.service.UserService;
+import com.wengyingjian.turing.common.model.User;
+import com.wengyingjian.turing.common.model.query.UserQuery;
+import com.wengyingjian.turing.common.service.UserService;
 import com.wengyingjian.weixin.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
