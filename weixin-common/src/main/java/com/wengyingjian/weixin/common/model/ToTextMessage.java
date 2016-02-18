@@ -1,15 +1,15 @@
 package com.wengyingjian.weixin.common.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.wengyingjian.kylin.util.XmlUtil;
 
 import java.io.Serializable;
 
 /**
- * Created by wengyingjian on 16/2/17.
+ * Created by wengyingjian on 16/2/18.
  */
 @XStreamAlias("xml")
-public class TextMessage implements Serializable {
+public class ToTextMessage implements Serializable {
+
     @XStreamAlias("ToUserName")
     private String toUserName;
     @XStreamAlias("FromUserName")
@@ -18,8 +18,8 @@ public class TextMessage implements Serializable {
     private String createTime;
     @XStreamAlias("MsgType")
     private String msgType;
-    @XStreamAlias("Event")
-    private String event;
+    @XStreamAlias("Content")
+    private String content;
 
     public String getToUserName() {
         return toUserName;
@@ -53,11 +53,11 @@ public class TextMessage implements Serializable {
         this.msgType = msgType;
     }
 
-    public String getEvent() {
-        return event;
+    public String getContent() {
+        return content;
     }
 
-    public void setEvent(String event) {
-        this.event = event;
+    public void setContent(String content) {
+        this.content = content;
     }
 }
