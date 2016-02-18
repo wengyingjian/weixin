@@ -8,7 +8,6 @@ import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
 import com.wengyingjian.weixin.common.model.WeixinResponseImageMessage;
 import com.wengyingjian.weixin.common.model.generic.WeixinResponseGeneralMessage;
 import com.wengyingjian.weixin.common.model.WeixinResponseTextMessage;
-import com.wengyingjian.weixin.util.XmlWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,8 @@ public class TextMessageService {
 
     @Autowired
     private TuringMessageService turingMessageService;
+    @Autowired
+    private OrangeService orangeService;
 
     /**
      * 处理文本信息
@@ -59,13 +60,16 @@ public class TextMessageService {
      * @return
      */
     private String doReplyTextMessage(WeixinRequstTextMessage fromTextMessage) {
-        if (filterMessage(fromTextMessage)) {
+        String content = fromTextMessage.getContent();
 
+        //orange相关过滤
+        if (orangeService.filter(content)) {
+            return orangeService.request(content);
         }
 
         //使用turing回复
         TuringRequestMessage turingRequestMessage = new TuringRequestMessage();
-        turingRequestMessage.setInfo(fromTextMessage.getContent());
+        turingRequestMessage.setInfo(content);
         turingRequestMessage.setUserid(fromTextMessage.getFromUserName());
         return turingMessageService.chat(turingRequestMessage);
     }

@@ -1,2 +1,3 @@
 service.base.url=${service.base.url}
 weixin.token=${weixin.token}
+shop.orange.url=${shop.orange.url}
