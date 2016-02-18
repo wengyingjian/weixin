@@ -16,7 +16,7 @@ public class SignatureService {
 
     Logger logger = LoggerFactory.getLogger(SignatureService.class);
 
-    @Value("weixin.token")
+    @Value("${weixin.token}")
     private String TOKEN;
 
     /**
