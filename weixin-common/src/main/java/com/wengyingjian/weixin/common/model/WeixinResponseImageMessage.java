@@ -2,6 +2,7 @@ package com.wengyingjian.weixin.common.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wengyingjian.weixin.common.enums.MessageType;
+import com.wengyingjian.weixin.common.model.generic.WeixinGeneralMessage;
 import com.wengyingjian.weixin.common.model.generic.WeixinRequestGeneralMessage;
 import com.wengyingjian.weixin.common.model.generic.WeixinResponseGeneralMessage;
 
@@ -20,8 +21,8 @@ public class WeixinResponseImageMessage extends WeixinResponseGeneralMessage {
     private Image image;
 
     @Override
-    public void wrapper(WeixinRequestGeneralMessage fromGeneralMessage) {
-        super.wrapper(fromGeneralMessage);
+    public void wrapper(WeixinGeneralMessage generalMessage) {
+        super.wrapper(generalMessage);
         this.msgType = MessageType.IMAGE.getType();
     }
 

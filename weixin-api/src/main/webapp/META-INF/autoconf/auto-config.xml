@@ -4,6 +4,7 @@
         <property name="service.base.url" defaultValue="http://localhost:8080/a" description="service url" />
         <property name="weixin.token" description="weixin token" />
         <property name="shop.orange.url"  description="shop.orange.url"  />
+        <property name="weixin.subscribe.welcome"  description="weixin.subscribe.welcome"  />
     </group>
 
     <script>

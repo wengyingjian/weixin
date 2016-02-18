@@ -3,6 +3,8 @@ package com.wengyingjian.weixin.controller;
 import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.weixin.common.enums.MessageType;
 import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
+import com.wengyingjian.weixin.common.model.WeixinSubscribeEventMessage;
+import com.wengyingjian.weixin.service.EventMessageService;
 import com.wengyingjian.weixin.service.TextMessageService;
 import com.wengyingjian.weixin.service.SignatureService;
 import com.wengyingjian.weixin.util.XPathUtil;
@@ -30,6 +32,8 @@ public class WeixinController {
     private SignatureService signatureService;
     @Autowired
     private TextMessageService textMessageService;
+    @Autowired
+    private EventMessageService eventMessageService;
     /**
      * 获取消息类型的xpath表达式
      */
@@ -90,6 +94,8 @@ public class WeixinController {
             reply = "";
         } else if (MessageType.LINK.getType().equals(messageType)) {
             return "";
+        } else if (MessageType.EVENT.getType().equals(messageType)) {
+            return eventMessageService.handleMessage(XmlUtil.fromXml(postContent, WeixinSubscribeEventMessage.class));
         }
         logger.info("reply message:{}", reply);
         return reply;

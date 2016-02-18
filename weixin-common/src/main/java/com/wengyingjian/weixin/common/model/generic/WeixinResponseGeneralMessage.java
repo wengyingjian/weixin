@@ -6,10 +6,10 @@ package com.wengyingjian.weixin.common.model.generic;
  */
 public class WeixinResponseGeneralMessage extends WeixinGeneralMessage {
 
-    public void wrapper(WeixinRequestGeneralMessage fromGeneralMessage) {
-        this.setCreateTime(fromGeneralMessage.getCreateTime());
-        this.setToUserName(fromGeneralMessage.getFromUserName());
-        this.setFromUserName(fromGeneralMessage.getToUserName());
+    public void wrapper(WeixinGeneralMessage generalMessage) {
+        this.setCreateTime(generalMessage.getCreateTime());
+        this.setToUserName(generalMessage.getFromUserName());
+        this.setFromUserName(generalMessage.getToUserName());
     }
 
 }
