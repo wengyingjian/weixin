@@ -8,6 +8,7 @@ import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
 import com.wengyingjian.weixin.common.model.WeixinResponseImageMessage;
 import com.wengyingjian.weixin.common.model.generic.WeixinResponseGeneralMessage;
 import com.wengyingjian.weixin.common.model.WeixinResponseTextMessage;
+import com.wengyingjian.weixin.util.XmlWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,7 +101,8 @@ public class TextMessageService {
     private WeixinResponseTextMessage replyTextMessage(WeixinRequstTextMessage fromTextMessage) {
         WeixinResponseTextMessage toTextMessage = new WeixinResponseTextMessage();
         toTextMessage.wrapper(fromTextMessage);
-        toTextMessage.setContent(doReplyTextMessage(fromTextMessage));
+        String content = doReplyTextMessage(fromTextMessage);
+        toTextMessage.setContent(content);
         return toTextMessage;
     }
 

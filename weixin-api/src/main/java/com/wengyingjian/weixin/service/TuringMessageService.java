@@ -61,29 +61,30 @@ public class TuringMessageService {
     }
 
     private String buildLinkResponse(TuringResponseLinkMessage response) {
-        return new StringBuilder(response.getText()).append("\n").append(response.getUrl()).toString();
+        return new StringBuilder(response.getText()).append("\n---\n")
+                .append("链接: ").append(response.getUrl()).toString();
     }
 
     private String buildCookbookResponse(TuringResponseCookbookMessage response) {
-        StringBuilder sb = new StringBuilder(response.getText()).append("\n");
+        StringBuilder sb = new StringBuilder(response.getText()).append("\n---\n");
         List<TuringResponseCookbookMessage.Cookbook> cookbooks = response.getList();
         for (TuringResponseCookbookMessage.Cookbook cookbook : cookbooks) {
-            sb.append(cookbook.getName()).append("\n")//
-                    .append(cookbook.getInfo()).append("\n")//
-                    .append(cookbook.getDetailurl()).append("\n\n");
+            sb.append("[").append(cookbook.getName()).append("]\n")//
+                    .append("用料: ").append(cookbook.getInfo()).append("\n")//
+                    .append("链接: ").append(cookbook.getDetailurl()).append("\n\n");
         }
-        return sb.toString();
+        return sb.substring(0,sb.length()-1);
     }
 
     private String buildNewsResponse(TuringResponseNewsMessage response) {
-        StringBuilder sb = new StringBuilder(response.getText()).append("\n");
+        StringBuilder sb = new StringBuilder(response.getText()).append("\n---\n");
         List<TuringResponseNewsMessage.News> newses = response.getList();
         for (TuringResponseNewsMessage.News news : newses) {
-            sb.append(news.getArticle()).append("\n")//
-                    .append(news.getDetailurl()).append("\n")//
-                    .append(news.getSource()).append("\n\n");
+            sb.append("[").append(news.getArticle()).append("]\n")//
+                    .append("链接: ").append(news.getDetailurl()).append("\n")//
+                    .append("来源: ").append(news.getSource()).append("\n\n");
         }
-        return sb.toString();
+        return sb.substring(0,sb.length()-1);
     }
 
 
