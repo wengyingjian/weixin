@@ -1,6 +1,5 @@
 package com.wengyingjian.weixin.service;
 
-import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.weixin.common.enums.TuringResponseType;
 import com.wengyingjian.weixin.common.model.*;
 import com.wengyingjian.weixin.common.model.generic.TuringResponseGereralMessage;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
+ * 图灵机器人回复
  * Created by wengyingjian on 16/2/18.
  */
 @Service

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
 /**
+ * 商品:橘子相关推送业务
+ *
  * Created by wengyingjian on 16/2/18.
  */
 @Service

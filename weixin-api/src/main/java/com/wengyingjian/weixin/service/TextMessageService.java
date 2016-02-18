@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * 文本消息回复
  * Created by wengyingjian on 16/2/17.
  */
 @Service

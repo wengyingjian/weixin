@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
 /**
+ * 微信token校验
  * Created by wengyingjian on 16/2/17.
  */
 @Service
