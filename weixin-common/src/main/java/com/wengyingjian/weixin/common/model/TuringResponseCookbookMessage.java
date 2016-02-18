@@ -2,6 +2,7 @@ package com.wengyingjian.weixin.common.model;
 
 import com.wengyingjian.weixin.common.model.generic.TuringResponseGereralMessage;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class TuringResponseCookbookMessage extends TuringResponseGereralMessage 
 
     private List<Cookbook> list;
 
-    public static class Cookbook {
+    public static class Cookbook implements Serializable{
 
         private String name;//名称
         private String icon;//图标

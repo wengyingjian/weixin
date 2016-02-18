@@ -5,6 +5,8 @@ import com.wengyingjian.weixin.common.enums.MessageType;
 import com.wengyingjian.weixin.common.model.generic.WeixinRequestGeneralMessage;
 import com.wengyingjian.weixin.common.model.generic.WeixinResponseGeneralMessage;
 
+import java.io.Serializable;
+
 
 /**
  * Created by wengyingjian on 16/2/18.
@@ -31,7 +33,7 @@ public class WeixinResponseImageMessage extends WeixinResponseGeneralMessage {
         this.image = image;
     }
 
-    public static class Image {
+    public static class Image implements Serializable {
         @XStreamAlias("MediaId")
         private String mediaId;
 

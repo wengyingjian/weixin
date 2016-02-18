@@ -26,10 +26,9 @@ public class TuringMessageService {
 
     /**
      * @param turingRequest
-     * @param weixinRequest
      * @return
      */
-    public String chat(TuringRequestMessage turingRequest, WeixinRequstTextMessage weixinRequest) {
+    public String chat(TuringRequestMessage turingRequest) {
         TuringResponseGereralMessage reply = turingService.chat(turingRequest);
         String responseStr = "";
         //异常信息处理

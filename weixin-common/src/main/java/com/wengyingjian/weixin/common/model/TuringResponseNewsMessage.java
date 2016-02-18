@@ -13,7 +13,7 @@ public class TuringResponseNewsMessage extends TuringResponseGereralMessage {
 
     private List<News> list;
 
-    public static class News {
+    public static class News implements Serializable{
         private String article;//文章标题
         private String source;//来源
         private String icon;//图标

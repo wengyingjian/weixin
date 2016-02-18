@@ -16,7 +16,7 @@ public class TuringTest {
 
     @Test
     public void testChat() {
-        String info = "北京到拉萨的火车";
+        String info = "衢州到哈尔滨";
         TuringRequestMessage requestMessage = new TuringRequestMessage();
         requestMessage.setInfo(info);
         requestMessage.setUserid("111");

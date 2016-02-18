@@ -66,7 +66,7 @@ public class TextMessageService {
         TuringRequestMessage turingRequestMessage = new TuringRequestMessage();
         turingRequestMessage.setInfo(fromTextMessage.getContent());
         turingRequestMessage.setUserid(fromTextMessage.getFromUserName());
-        return turingMessageService.chat(turingRequestMessage,fromTextMessage);
+        return turingMessageService.chat(turingRequestMessage);
     }
 
     private boolean filterMessage(WeixinRequstTextMessage fromTextMessage) {
