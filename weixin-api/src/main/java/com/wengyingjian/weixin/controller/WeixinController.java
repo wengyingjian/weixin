@@ -93,9 +93,9 @@ public class WeixinController {
         } else if (MessageType.LOCATION.getType().equals(messageType)) {
             reply = "";
         } else if (MessageType.LINK.getType().equals(messageType)) {
-            return "";
+            reply = "";
         } else if (MessageType.EVENT.getType().equals(messageType)) {
-            return eventMessageService.handleMessage(XmlUtil.fromXml(postContent, WeixinSubscribeEventMessage.class));
+            reply = eventMessageService.handleMessage(XmlUtil.fromXml(postContent, WeixinSubscribeEventMessage.class));
         }
         logger.info("reply message:{}", reply);
         return reply;

@@ -28,6 +28,7 @@ public class EventMessageService {
      * @return
      */
     public String handleMessage(WeixinSubscribeEventMessage subscribeEventMessage) {
+        logger.info("handling subscribeMessage...");
         String subscribeType = subscribeEventMessage.getEvent();
         String response = "";
         if (SubscribeType.SUBSCRIBE.getType().equals(subscribeType)) {
@@ -39,7 +40,9 @@ public class EventMessageService {
         WeixinResponseTextMessage toTextMessage = new WeixinResponseTextMessage();
         toTextMessage.wrapper(subscribeEventMessage);
         toTextMessage.setContent(response);
-        return XmlUtil.toXml(toTextMessage);
+        String resp = XmlUtil.toXml(toTextMessage);
+        logger.info("subscribe resp:{}", resp);
+        return resp;
     }
 
     private String replyUnsubscribeMessage(WeixinSubscribeEventMessage subscribeEventMessage) {
