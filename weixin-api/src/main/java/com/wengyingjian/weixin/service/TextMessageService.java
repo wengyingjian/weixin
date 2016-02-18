@@ -4,7 +4,8 @@ import com.wengyingjian.kylin.util.JsonUtil;
 import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.weixin.common.enums.MessageType;
 import com.wengyingjian.weixin.common.model.FromTextMessage;
-import com.wengyingjian.weixin.common.model.ToGeneralMessage;
+import com.wengyingjian.weixin.common.model.ToImageMessage;
+import com.wengyingjian.weixin.common.model.generic.ToGeneralMessage;
 import com.wengyingjian.weixin.common.model.ToTextMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,20 @@ public class TextMessageService {
     }
 
     private ToGeneralMessage replyImageMessage(FromTextMessage fromTextMessage) {
-        return null;
+        ToImageMessage toImageMessage = new ToImageMessage();
+        toImageMessage.wrapper(fromTextMessage);
+        ToImageMessage.Image image = new ToImageMessage.Image();
+        image.setMediaId(doReplyImageMessage(fromTextMessage));
+        toImageMessage.setImage(image);
+        return toImageMessage;
+    }
+
+    /**
+     * @param fromTextMessage
+     * @return 图片的url地址
+     */
+    private String doReplyImageMessage(FromTextMessage fromTextMessage) {
+        return "订阅.png";
     }
 
     /**
@@ -75,8 +89,8 @@ public class TextMessageService {
     private MessageType dispatchReplyType(FromTextMessage fromTextMessage) {
         //TODO:根据消息内容判断出返回消息的类型
         String content = fromTextMessage.getContent();
-        if (true) {
-            return MessageType.TEXT;
+        if ("图片".equals(content)) {
+            return MessageType.IMAGE;
         }
         return MessageType.TEXT;
     }

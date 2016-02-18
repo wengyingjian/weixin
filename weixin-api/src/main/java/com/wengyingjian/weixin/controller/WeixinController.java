@@ -74,31 +74,25 @@ public class WeixinController {
             return "系统异常";
         }
         logger.info("get type: {}", messageType);
-        logger.info("text type: {}", MessageType.TEXT.getType());
-        logger.info("equals:" + MessageType.TEXT.getType().equals(messageType));
         //3.根据不同的消息类型分配不同的处理方案.
+        String reply = null;
         if (MessageType.TEXT.getType().equals(messageType)) {
-            return textMessageService.handleMessage(XmlUtil.fromXml(postContent, FromTextMessage.class));
-        }
-        if (MessageType.IMAGE.getType().equals(messageType)) {
+            reply = textMessageService.handleMessage(XmlUtil.fromXml(postContent, FromTextMessage.class));
+        } else if (MessageType.IMAGE.getType().equals(messageType)) {
+            reply = "";
+        } else if (MessageType.VOICE.getType().equals(messageType)) {
+            reply = "";
+        } else if (MessageType.VIDEO.getType().equals(messageType)) {
+            reply = "";
+        } else if (MessageType.SHORT_VIDEO.getType().equals(messageType)) {
+            reply = "";
+        } else if (MessageType.LOCATION.getType().equals(messageType)) {
+            reply = "";
+        } else if (MessageType.LINK.getType().equals(messageType)) {
             return "";
         }
-        if (MessageType.VOICE.getType().equals(messageType)) {
-            return "";
-        }
-        if (MessageType.VIDEO.getType().equals(messageType)) {
-            return "";
-        }
-        if (MessageType.SHORT_VIDEO.getType().equals(messageType)) {
-            return "";
-        }
-        if (MessageType.LOCATION.getType().equals(messageType)) {
-            return "";
-        }
-        if (MessageType.LINK.getType().equals(messageType)) {
-            return "";
-        }
-        return "";
+        logger.info("reply message:{}", reply);
+        return reply;
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.wengyingjian.weixin.common.model;
+package com.wengyingjian.weixin.common.model.generic;
 
 /**
  * 回复消息的父类

@@ -2,8 +2,9 @@ package com.wengyingjian.weixin.common.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.wengyingjian.weixin.common.enums.MessageType;
+import com.wengyingjian.weixin.common.model.generic.FromGeneralMessage;
+import com.wengyingjian.weixin.common.model.generic.ToGeneralMessage;
 
-import java.io.Serializable;
 
 /**
  * Created by wengyingjian on 16/2/18.

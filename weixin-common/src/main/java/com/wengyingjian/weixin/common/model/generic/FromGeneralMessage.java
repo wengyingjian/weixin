@@ -1,6 +1,7 @@
-package com.wengyingjian.weixin.common.model;
+package com.wengyingjian.weixin.common.model.generic;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.wengyingjian.weixin.common.model.generic.GeneralMessage;
 
 /**
  * 接收到消息的父类

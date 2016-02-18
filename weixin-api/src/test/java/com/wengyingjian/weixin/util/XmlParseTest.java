@@ -2,9 +2,7 @@ package com.wengyingjian.weixin.util;
 
 import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.weixin.common.model.FromTextMessage;
-import com.wengyingjian.weixin.common.model.SubMessage;
 import com.wengyingjian.weixin.common.model.ToImageMessage;
-import com.wengyingjian.weixin.common.model.ToTextMessage;
 import org.junit.Test;
 
 /**
@@ -42,13 +40,4 @@ public class XmlParseTest {
 
     }
 
-    @Test
-    public void testExtendsXml() {
-        SubMessage subMessage=new SubMessage();
-        subMessage.setToUserName("aaa");
-        subMessage.setCreateTime("a");
-        subMessage.setImage("asd");
-
-        System.out.println(XmlUtil.toXml(subMessage));
-    }
 }
