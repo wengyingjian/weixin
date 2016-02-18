@@ -17,7 +17,7 @@ public class ToImageMessage extends ToGeneralMessage {
     private Image image;
 
     @Override
-    protected void wrapper(FromGeneralMessage fromGeneralMessage) {
+    public void wrapper(FromGeneralMessage fromGeneralMessage) {
         super.wrapper(fromGeneralMessage);
         this.msgType = MessageType.IMAGE.getType();
     }
