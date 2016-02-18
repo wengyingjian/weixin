@@ -11,6 +11,16 @@ public class WeixinSubscribeEventMessage extends WeixinGeneralMessage {
 
     @XStreamAlias("Event")
     private String event;
+    @XStreamAlias("EventKey")
+    private String eventKey;
+
+    public String getEventKey() {
+        return eventKey;
+    }
+
+    public void setEventKey(String eventKey) {
+        this.eventKey = eventKey;
+    }
 
     public String getEvent() {
         return event;

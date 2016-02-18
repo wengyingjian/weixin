@@ -77,7 +77,8 @@ public class WeixinController {
             logger.error("content [{}] parse error with patten [{}]", postContent, TYPE_PATTERN);
             return "系统异常";
         }
-        logger.info("get type: {}", messageType);
+        logger.info("get message detail: [{}]",postContent);
+        logger.info("get message type: [{}]", messageType);
         //3.根据不同的消息类型分配不同的处理方案.
         String reply = null;
         if (MessageType.TEXT.getType().equals(messageType)) {
@@ -95,6 +96,7 @@ public class WeixinController {
         } else if (MessageType.LINK.getType().equals(messageType)) {
             reply = "";
         } else if (MessageType.EVENT.getType().equals(messageType)) {
+            logger.info("match event!");
             reply = eventMessageService.handleMessage(XmlUtil.fromXml(postContent, WeixinSubscribeEventMessage.class));
         }
         logger.info("reply message:{}", reply);
