@@ -8,7 +8,7 @@ import java.io.Serializable;
  * message父类
  * Created by wengyingjian on 16/2/18.
  */
-public class GeneralMessage implements Serializable {
+public class WeixinGeneralMessage implements Serializable {
 
     @XStreamAlias("ToUserName")
     private String toUserName;

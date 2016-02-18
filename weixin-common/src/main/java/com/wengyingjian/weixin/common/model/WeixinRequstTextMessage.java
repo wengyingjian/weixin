@@ -1,13 +1,13 @@
 package com.wengyingjian.weixin.common.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.wengyingjian.weixin.common.model.generic.FromGeneralMessage;
+import com.wengyingjian.weixin.common.model.generic.WeixinRequestGeneralMessage;
 
 /**
  * Created by wengyingjian on 16/2/17.
  */
 @XStreamAlias("xml")
-public class FromTextMessage extends FromGeneralMessage {
+public class WeixinRequstTextMessage extends WeixinRequestGeneralMessage {
     @XStreamAlias("Content")
     private String content;
 
