@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <group>
-        <property name="service.base.url" defaultValue="http://localhost:8080/a" description="service url" />
-        <property name="weixin.token" description="weixin token" />
+        <property name="turing.url" defaultValue="http://www.tuling123.com/openapi/api" description="turing url" />
+        <property name="turing.key"  description="turing key" />
     </group>
 
     <script>

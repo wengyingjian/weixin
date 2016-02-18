@@ -11,7 +11,7 @@ public enum TuringResponseType {
 
     ERROR_KEY("40001", "参数key错误"),
     ERROR_INFO_EMPTY("40002", "请求内容info为空"),
-    ERROR_USER_OUT("40004", "当天请求次数已使用完"),
+    ERROR_USE_OUT("40004", "当天请求次数已使用完"),
     ERROR_DATA_FORMAT("40007", "数据格式异常");
 
 
