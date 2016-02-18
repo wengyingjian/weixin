@@ -8,6 +8,7 @@ import com.wengyingjian.weixin.common.enums.TuringResponseType;
 import com.wengyingjian.weixin.common.model.*;
 import com.wengyingjian.weixin.common.model.generic.TuringResponseGereralMessage;
 import com.wengyingjian.weixin.common.service.TuringService;
+import com.wengyingjian.weixin.model.TuringResponseMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
