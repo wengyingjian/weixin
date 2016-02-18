@@ -1,8 +1,8 @@
 package com.wengyingjian.weixin.util;
 
 import com.wengyingjian.kylin.util.XmlUtil;
-import com.wengyingjian.weixin.common.model.FromTextMessage;
-import com.wengyingjian.weixin.common.model.ToImageMessage;
+import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
+import com.wengyingjian.weixin.common.model.WeixinResponseImageMessage;
 import org.junit.Test;
 
 /**
@@ -25,15 +25,15 @@ public class XmlParseTest {
 
     @Test
     public void testToXml() {
-        FromTextMessage textMessage = new FromTextMessage();
+        WeixinRequstTextMessage textMessage = new WeixinRequstTextMessage();
         textMessage.setCreateTime("ada");
         String a = XmlUtil.toXml(textMessage);
         System.out.println(a);
 
 
-        ToImageMessage toImageMessage = new ToImageMessage();
+        WeixinResponseImageMessage toImageMessage = new WeixinResponseImageMessage();
         toImageMessage.setCreateTime("adsa");
-        ToImageMessage.Image image = new ToImageMessage.Image();
+        WeixinResponseImageMessage.Image image = new WeixinResponseImageMessage.Image();
         image.setMediaId("aaaa");
         toImageMessage.setImage(image);
         System.out.println(XmlUtil.toXml(toImageMessage));

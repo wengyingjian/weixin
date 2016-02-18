@@ -2,7 +2,7 @@ package com.wengyingjian.weixin.controller;
 
 import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.weixin.common.enums.MessageType;
-import com.wengyingjian.weixin.common.model.FromTextMessage;
+import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
 import com.wengyingjian.weixin.service.TextMessageService;
 import com.wengyingjian.weixin.service.SignatureService;
 import com.wengyingjian.weixin.util.XPathUtil;
@@ -77,7 +77,7 @@ public class WeixinController {
         //3.根据不同的消息类型分配不同的处理方案.
         String reply = null;
         if (MessageType.TEXT.getType().equals(messageType)) {
-            reply = textMessageService.handleMessage(XmlUtil.fromXml(postContent, FromTextMessage.class));
+            reply = textMessageService.handleMessage(XmlUtil.fromXml(postContent, WeixinRequstTextMessage.class));
         } else if (MessageType.IMAGE.getType().equals(messageType)) {
             reply = "";
         } else if (MessageType.VOICE.getType().equals(messageType)) {

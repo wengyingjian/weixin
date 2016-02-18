@@ -3,12 +3,14 @@ package com.wengyingjian.weixin.service;
 import com.wengyingjian.kylin.util.JsonUtil;
 import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.weixin.common.enums.MessageType;
-import com.wengyingjian.weixin.common.model.FromTextMessage;
-import com.wengyingjian.weixin.common.model.ToImageMessage;
-import com.wengyingjian.weixin.common.model.generic.ToGeneralMessage;
-import com.wengyingjian.weixin.common.model.ToTextMessage;
+import com.wengyingjian.weixin.common.model.TuringRequestMessage;
+import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
+import com.wengyingjian.weixin.common.model.WeixinResponseImageMessage;
+import com.wengyingjian.weixin.common.model.generic.WeixinResponseGeneralMessage;
+import com.wengyingjian.weixin.common.model.WeixinResponseTextMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,13 +21,16 @@ public class TextMessageService {
 
     private Logger logger = LoggerFactory.getLogger(TextMessageService.class);
 
+    @Autowired
+    private TuringMessageService turingMessageService;
+
     /**
      * 处理文本信息
      *
      * @param fromTextMessage
      * @return
      */
-    public String handleMessage(FromTextMessage fromTextMessage) {
+    public String handleMessage(WeixinRequstTextMessage fromTextMessage) {
         logger.info("handling message :[{}]...", JsonUtil.getJsonFromObject(fromTextMessage));
         //1.根据接收到的消息来决定消息的返回类型是文本还是图片
         MessageType returnType = dispatchReplyType(fromTextMessage);
@@ -33,7 +38,7 @@ public class TextMessageService {
             return "";
         }
         //2.为不同的回复消息类型分配不同的解决方案,最终得到ToGeneralMessage对象
-        ToGeneralMessage replyMessage = null;
+        WeixinResponseGeneralMessage replyMessage = null;
         if (returnType == MessageType.TEXT) {
             replyMessage = replyTextMessage(fromTextMessage);
         } else if (returnType == MessageType.IMAGE) {
@@ -46,22 +51,45 @@ public class TextMessageService {
         return XmlUtil.toXml(replyMessage);
     }
 
-    private ToGeneralMessage replyImageMessage(FromTextMessage fromTextMessage) {
-        ToImageMessage toImageMessage = new ToImageMessage();
-        toImageMessage.wrapper(fromTextMessage);
-        ToImageMessage.Image image = new ToImageMessage.Image();
-        image.setMediaId(doReplyImageMessage(fromTextMessage));
-        toImageMessage.setImage(image);
-        return toImageMessage;
+    /**
+     * 文本消息回复内容的逻辑实现
+     *
+     * @param fromTextMessage
+     * @return
+     */
+    private String doReplyTextMessage(WeixinRequstTextMessage fromTextMessage) {
+        if (filterMessage(fromTextMessage)) {
+
+        }
+
+        //使用turing回复
+        TuringRequestMessage turingRequestMessage = new TuringRequestMessage();
+        turingRequestMessage.setInfo(fromTextMessage.getContent());
+        turingRequestMessage.setUserid(fromTextMessage.getFromUserName());
+        return turingMessageService.chat(turingRequestMessage);
+    }
+
+    private boolean filterMessage(WeixinRequstTextMessage fromTextMessage) {
+        return false;
     }
 
     /**
      * @param fromTextMessage
      * @return 图片的url地址
      */
-    private String doReplyImageMessage(FromTextMessage fromTextMessage) {
+    private String doReplyImageMessage(WeixinRequstTextMessage fromTextMessage) {
         return "订阅.png";
     }
+
+    private WeixinResponseGeneralMessage replyImageMessage(WeixinRequstTextMessage fromTextMessage) {
+        WeixinResponseImageMessage toImageMessage = new WeixinResponseImageMessage();
+        toImageMessage.wrapper(fromTextMessage);
+        WeixinResponseImageMessage.Image image = new WeixinResponseImageMessage.Image();
+        image.setMediaId(doReplyImageMessage(fromTextMessage));
+        toImageMessage.setImage(image);
+        return toImageMessage;
+    }
+
 
     /**
      * 返回回复文本消息对象
@@ -69,29 +97,19 @@ public class TextMessageService {
      * @param fromTextMessage
      * @return
      */
-    private ToTextMessage replyTextMessage(FromTextMessage fromTextMessage) {
-        ToTextMessage toTextMessage = new ToTextMessage();
+    private WeixinResponseTextMessage replyTextMessage(WeixinRequstTextMessage fromTextMessage) {
+        WeixinResponseTextMessage toTextMessage = new WeixinResponseTextMessage();
         toTextMessage.wrapper(fromTextMessage);
         toTextMessage.setContent(doReplyTextMessage(fromTextMessage));
         return toTextMessage;
     }
 
-    /**
-     * 文本消息回复内容的逻辑实现
-     *
-     * @param fromTextMessage
-     * @return
-     */
-    private String doReplyTextMessage(FromTextMessage fromTextMessage) {
-        return fromTextMessage.getContent() + "!!!";
-    }
-
-    private MessageType dispatchReplyType(FromTextMessage fromTextMessage) {
+    private MessageType dispatchReplyType(WeixinRequstTextMessage fromTextMessage) {
         //TODO:根据消息内容判断出返回消息的类型
         String content = fromTextMessage.getContent();
-        if ("图片".equals(content)) {
-            return MessageType.IMAGE;
-        }
+//        if ("图片".equals(content)) {
+//            return MessageType.IMAGE;
+//        }
         return MessageType.TEXT;
     }
 
