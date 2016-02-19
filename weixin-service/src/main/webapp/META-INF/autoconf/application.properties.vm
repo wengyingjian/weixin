@@ -1,2 +1,4 @@
-turing.url=${turing.url}
-turing.key=${turing.key}
+service.turing.url = ${service.turing.url}
+shop.orange.url = ${shop.orange.url}
+
+weixin.subscribe.welcome = ${weixin.subscribe.welcome}

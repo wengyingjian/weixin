@@ -1,16 +1,12 @@
 package com.wengyingjian.weixin.controller;
 
-import com.wengyingjian.kylin.util.XmlUtil;
-import com.wengyingjian.turing.common.enums.MessageType;
-import com.wengyingjian.turing.common.model.WeixinRequstTextMessage;
-import com.wengyingjian.turing.common.model.WeixinSubscribeEventMessage;
-import com.wengyingjian.weixin.service.EventMessageService;
-import com.wengyingjian.weixin.service.TextMessageService;
-import com.wengyingjian.weixin.service.SignatureService;
-import com.wengyingjian.weixin.util.XPathUtil;
+import com.wengyingjian.weixin.service.WeixinMessageService;
+import com.wengyingjian.weixin.service.WeixinSignatureService;
+import com.wengyingjian.weixin.util.WeixinMessageResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Created by wengyingjian on 16/2/17.
+ * Created by wengyingjian on 16/2/19.
  */
 @RestController
 public class WeixinController {
@@ -29,15 +25,9 @@ public class WeixinController {
     Logger logger = LoggerFactory.getLogger(WeixinController.class);
 
     @Autowired
-    private SignatureService signatureService;
+    private WeixinSignatureService signatureService;
     @Autowired
-    private TextMessageService textMessageService;
-    @Autowired
-    private EventMessageService eventMessageService;
-    /**
-     * 获取消息类型的xpath表达式
-     */
-    private String TYPE_PATTERN = "/xml/MsgType";
+    private WeixinMessageService weixinMessageService;
 
     /**
      * 微信校验
@@ -53,8 +43,10 @@ public class WeixinController {
                                  String timestamp,//时间戳
                                  String nonce,//随机数
                                  String echostr) {//随机字符串
+        logger.info("checkSignature at {}", timestamp);
         return signatureService.doCheckSignature(signature, timestamp, nonce, echostr) ? echostr : "";
     }
+
 
     /**
      * 接收(并回复)消息
@@ -64,72 +56,36 @@ public class WeixinController {
      */
     @RequestMapping(name = "call_back", method = RequestMethod.POST)
     public String receiveMessage(HttpServletRequest request) {
-
-        logger.info("in method !");
-
-        //1.从request中解析出字符串内容
-        String postContent = getData(request);
-        //2.从post过来的字符串中解析出消息的类型
-        String messageType = null;
-        try {
-            messageType = XPathUtil.parse(postContent, TYPE_PATTERN);
-        } catch (Exception e) {
-            logger.error("content [{}] parse error with patten [{}]", postContent, TYPE_PATTERN);
-            return "系统异常";
+        logger.info("receive message ");
+        //1.从request中读取post内容
+        String content = read(request);
+        if (StringUtils.isEmpty(content)) {
+            return "";
         }
-        logger.info("get message detail: [{}]",postContent);
-        logger.info("get message type: [{}]", messageType);
-        //3.根据不同的消息类型分配不同的处理方案.
-        String reply = null;
-        if (MessageType.TEXT.getType().equals(messageType)) {
-            reply = textMessageService.handleMessage(XmlUtil.fromXml(postContent, WeixinRequstTextMessage.class));
-        } else if (MessageType.IMAGE.getType().equals(messageType)) {
-            reply = "";
-        } else if (MessageType.VOICE.getType().equals(messageType)) {
-            reply = "";
-        } else if (MessageType.VIDEO.getType().equals(messageType)) {
-            reply = "";
-        } else if (MessageType.SHORT_VIDEO.getType().equals(messageType)) {
-            reply = "";
-        } else if (MessageType.LOCATION.getType().equals(messageType)) {
-            reply = "";
-        } else if (MessageType.LINK.getType().equals(messageType)) {
-            reply = "";
-        } else if (MessageType.EVENT.getType().equals(messageType)) {
-            logger.info("match event!");
-            reply = eventMessageService.handleMessage(XmlUtil.fromXml(postContent, WeixinSubscribeEventMessage.class));
+        //2.从post中解析出type
+        String type = WeixinMessageResolver.resolveRequestMessageType(content);
+        if (StringUtils.isEmpty(type)) {
+            return "";
         }
-        logger.info("reply message:{}", reply);
-        return reply;
+        //3.处理的逻辑交给weixinMessageService
+        return weixinMessageService.handleWeixinMessage(content, type);
     }
 
-    /**
-     * 从post请求中读取数据
-     *
-     * @param request
-     * @return
-     */
-    private String getData(HttpServletRequest request) {
-        StringBuilder sb = new StringBuilder();
-        BufferedReader br = null;
+
+    public String read(HttpServletRequest request) {
+        BufferedReader in = null;
+        StringBuffer buffer = new StringBuffer();
         try {
-            br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-            String line = br.readLine();
-            while (line != null) {
-                sb.append(line);
-                line = br.readLine();
+            in = new BufferedReader(new InputStreamReader(request.getInputStream()));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                buffer.append(line);
             }
-            return sb.toString();
         } catch (IOException e) {
-            logger.error(e.getMessage());
-            return null;
-        } finally {
-            if (br != null)
-                try {
-                    br.close();
-                } catch (IOException e) {
-                }
+            e.printStackTrace();
+            logger.error("request post message parse error:{}", e.getMessage());
         }
+        return buffer.toString();
     }
 
 }

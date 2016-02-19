@@ -13,6 +13,7 @@
     <packaging>war</packaging>
 
     <dependencies>
+
         <dependency>
             <groupId>com.wengyingjian.kylin</groupId>
             <artifactId>kylin-rpc-client</artifactId>
@@ -22,6 +23,7 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 
     <build>

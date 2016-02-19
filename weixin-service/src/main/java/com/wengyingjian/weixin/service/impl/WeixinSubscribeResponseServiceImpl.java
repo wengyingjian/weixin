@@ -2,7 +2,6 @@ package com.wengyingjian.weixin.service.impl;
 
 import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
 import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
-import com.wengyingjian.weixin.common.model.generic.WeixinRequestMessage;
 import com.wengyingjian.weixin.common.model.generic.WeixinResponseMessage;
 import com.wengyingjian.weixin.common.service.WeixinSubscribeResponseService;
 
@@ -13,12 +12,12 @@ import com.wengyingjian.weixin.common.service.WeixinSubscribeResponseService;
 public class WeixinSubscribeResponseServiceImpl implements WeixinSubscribeResponseService {
 
     @Override
-    public boolean matches(WeixinRequestMessage requestMessage) {
+    public boolean matches(String type) {
         return false;
     }
 
     @Override
-    public WeixinResponseMessage handleMessage(WeixinRequestMessage requestMessage) {
+    public String handleMessage(String requestContent) {
         return null;
     }
 }

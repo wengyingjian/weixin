@@ -13,9 +13,9 @@ import java.util.Arrays;
  * Created by wengyingjian on 16/2/17.
  */
 @Service
-public class SignatureService {
+public class WeixinSignatureService {
 
-    Logger logger = LoggerFactory.getLogger(SignatureService.class);
+    Logger logger = LoggerFactory.getLogger(WeixinSignatureService.class);
 
     @Value("${weixin.token}")
     private String TOKEN;

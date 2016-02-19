@@ -1,6 +1,5 @@
 package com.wengyingjian.weixin.common.service.generic;
 
-import com.wengyingjian.weixin.common.model.generic.WeixinRequestMessage;
 import com.wengyingjian.weixin.common.model.generic.WeixinResponseMessage;
 
 /**
@@ -13,18 +12,18 @@ public interface WeixinResponseService {
     /**
      * 匹配消息,是否满足该service来处理
      *
-     * @param requestMessage
+     * @param type
      * @return
      */
-    boolean matches(WeixinRequestMessage requestMessage);
+    boolean matches(String  type);
 
     /**
      * 处理此消息
      *
-     * @param requestMessage
+     * @param requestContent
      * @return
      */
-    WeixinResponseMessage handleMessage(WeixinRequestMessage requestMessage);
+    String handleMessage(String requestContent);
 }
 
 

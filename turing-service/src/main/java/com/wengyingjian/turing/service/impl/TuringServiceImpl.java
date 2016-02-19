@@ -25,9 +25,9 @@ public class TuringServiceImpl implements TuringService {
     private Logger logger = LoggerFactory.getLogger(TuringServiceImpl.class);
 
     @Value("${turing.url}")
-    private String turingUrl = "http://www.tuling123.com/openapi/api";
+    private String turingUrl ;
     @Value("${turing.key}")
-    private String turingKey = "c1a18950a16857357dceeca377efe7fe";
+    private String turingKey ;
 
     @Override
     public TuringResponseGereralMessage chat(TuringRequestMessage requestMessage) {
