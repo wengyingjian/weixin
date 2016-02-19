@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wengyingjian.weixin.dao.mapper.SubscribeWelcomeMapper">
+    <resultMap id="welcomeMapper" type="com.wengyingjian.weixin.common.model.SubscribeWelcome">
+        <id column="id" property="id"/>
+        <result column="reply" property="reply"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+        <result column="begin_time" property="beginTime"/>
+        <result column="expire_time" property="expireTime"/>
+    </resultMap>
+
+    <select id="selectEffective" resultMap="welcomeMapper">
+        SELECT reply FROM subscribe_welcome WHERE
+        ( begin_time IS NULL OR begin_time &lt; UNIX_TIMESTAMP(now()) )
+        AND
+        ( end_time IS NULL OR end_time &gt; UNIX_TIMESTAMP(now()) )
+    </select>
+
+</mapper>

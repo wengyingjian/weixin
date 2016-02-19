@@ -31,8 +31,9 @@
   
 **文本消息扩展:**   
   
-文本消息提供消息关键字过滤扩展功能.  
-在`com.wengyingjian.weixin.filter`包下,只需实现了`com.wengyingjian.weixin.filter.generic.WeixinInterceptor`接口,  
+文本消息提供消息关键字过滤扩展功能.   
+在`com.wengyingjian.weixin.filter`包下,  
+只需实现了`com.wengyingjian.weixin.filter.generic.WeixinInterceptor`接口,  
 并且注册为bean,即可由默认的文本消息处理器自动过滤.  
 首先调用`filter`方法查看是否满足过滤条件,如果满足,则调用`intercept`方法将消息进行拦截,在此处进行回复.  
   
