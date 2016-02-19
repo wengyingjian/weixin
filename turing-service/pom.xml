@@ -15,6 +15,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.wengyingjian.weixin</groupId>
+            <artifactId>turing-common</artifactId>
+            <version>${turing.common.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.wengyingjian.kylin</groupId>
             <artifactId>kylin-datasource</artifactId>
         </dependency>
