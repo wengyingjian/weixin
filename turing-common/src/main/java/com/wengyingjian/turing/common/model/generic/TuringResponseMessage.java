@@ -1,4 +1,4 @@
-package com.wengyingjian.turing.model;
+package com.wengyingjian.turing.common.model.generic;
 
 import com.wengyingjian.turing.common.model.generic.TuringResponseGereralMessage;
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wengyingjian.turing.dao.mapper.TuringRecordMapper">
+
+    <resultMap id="turingMap" type="com.wengyingjian.turing.dao.mapper.TuringRecordMapper">
+        <id column="id" property="id"/>
+        <result column="uid" property="uid"/>
+        <result column="request_text" property="requestText"/>
+        <result column="response_type" property="responseType"/>
+        <result column="response_text" property="responseText"/>
+        <result column="response_url" property="responseUrl"/>
+        <result column="response_list" property="responseList"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+
+    <insert id="insertSelective" parameterType="com.wengyingjian.turing.dao.mapper.TuringRecordMapper">
+        INSERT INTO turing_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="requestText != null">
+                request_text,
+            </if>
+            <if test="responseType != null">
+                response_type,
+            </if>
+            <if test="responseText != null">
+                response_text,
+            </if>
+            <if test="responseUrl != null">
+                response_url,
+            </if>
+            <if test="responseList != null">
+                response_list,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{ id },
+            </if>
+            <if test="uid != null">
+                #{ uid },
+            </if>
+            <if test="requestText != null">
+                #{ requestText },
+            </if>
+            <if test="responseType != null">
+                #{ responseType },
+            </if>
+            <if test="responseText != null">
+                #{ responseText },
+            </if>
+            <if test="responseUrl != null">
+                #{ responseUrl },
+            </if>
+            <if test="responseList != null">
+                #{ responseList },
+            </if>
+            <if test="createTime != null">
+                #{ createTime },
+            </if>
+            <if test="modifyTime != null">
+                #{ modifyTime },
+            </if>
+        </trim>
+    </insert>
+
+    <!--<sql id="base_Column_List">-->
+        <!--id,uid,user_type-->
+    <!--</sql>-->
+
+    <!--<select id="selectUsers" resultMap="userMapper" parameterType="UserQuery">-->
+        <!--SELECT-->
+        <!--<include refid="base_Column_List"/>-->
+        <!--FROM t_user-->
+        <!--<where>-->
+            <!--<if test="id != null">-->
+                <!--id = #{ id }-->
+            <!--</if>-->
+            <!--<if test="userName != null">-->
+                <!--AND user_name = #{ userName }-->
+            <!--</if>-->
+            <!--<if test="userType != null">-->
+                <!--AND user_type = #{ userType }-->
+            <!--</if>-->
+        <!--</where>-->
+        <!--<if test="pageQuery != null">-->
+            <!--LIMIT ${offset},${limit}-->
+        <!--</if>-->
+    <!--</select>-->
+
+</mapper>

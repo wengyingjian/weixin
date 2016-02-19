@@ -13,6 +13,7 @@ public class WeixinMessageResolver {
 
     private static Logger logger = LoggerFactory.getLogger(WeixinMessageResolver.class);
     private static final String TYPE_PATTERN = "/xml/MsgType";
+    private static final String EVENT_PATTERN = "/xml/Event";
 
     /**
      * 从xml中解析出type属性
@@ -23,6 +24,22 @@ public class WeixinMessageResolver {
     public static String resolveRequestMessageType(String messageContent) {
         try {
             return XPathUtil.parse(messageContent, TYPE_PATTERN);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("parse error for message : [{}] \n reason : [{}]", messageContent, e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * 从xml中解析出type属性
+     *
+     * @param messageContent
+     * @return
+     */
+    public static String resolveRequestMessageEvent(String messageContent) {
+        try {
+            return XPathUtil.parse(messageContent, EVENT_PATTERN);
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("parse error for message : [{}] \n reason : [{}]", messageContent, e.getMessage());

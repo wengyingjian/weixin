@@ -7,10 +7,12 @@ import com.wengyingjian.kylin.util.JsonUtil;
 import com.wengyingjian.turing.common.enums.TuringResponseType;
 import com.wengyingjian.turing.common.model.*;
 import com.wengyingjian.turing.common.model.generic.TuringResponseGereralMessage;
+import com.wengyingjian.turing.common.service.TuringRecordService;
 import com.wengyingjian.turing.common.service.TuringService;
-import com.wengyingjian.turing.model.TuringResponseMessage;
+import com.wengyingjian.turing.common.model.generic.TuringResponseMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.HashMap;
@@ -25,9 +27,12 @@ public class TuringServiceImpl implements TuringService {
     private Logger logger = LoggerFactory.getLogger(TuringServiceImpl.class);
 
     @Value("${turing.url}")
-    private String turingUrl ;
+    private String turingUrl;
     @Value("${turing.key}")
-    private String turingKey ;
+    private String turingKey;
+
+    @Autowired
+    private TuringRecordService turingRecordService;
 
     @Override
     public TuringResponseGereralMessage chat(TuringRequestMessage requestMessage) {
@@ -52,6 +57,9 @@ public class TuringServiceImpl implements TuringService {
         } else if (TuringResponseType.NEWS.getCode().equals(messageType)) {
             responseClass = TuringResponseNewsMessage.class;
         }
-        return TuringResponseGereralMessage.class.cast(JsonUtil.getObjectFromJson(response, responseClass));
+        TuringResponseGereralMessage responseGereralMessage = TuringResponseGereralMessage.class
+                .cast(JsonUtil.getObjectFromJson(response, responseClass));
+        turingRecordService.recordTuringMessage(requestMessage, gereralMessage);
+        return responseGereralMessage;
     }
 }

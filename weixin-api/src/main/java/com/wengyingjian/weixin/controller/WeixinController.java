@@ -2,7 +2,6 @@ package com.wengyingjian.weixin.controller;
 
 import com.wengyingjian.weixin.service.WeixinMessageService;
 import com.wengyingjian.weixin.service.WeixinSignatureService;
-import com.wengyingjian.weixin.util.WeixinMessageResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,13 +61,9 @@ public class WeixinController {
         if (StringUtils.isEmpty(content)) {
             return "";
         }
-        //2.从post中解析出type
-        String type = WeixinMessageResolver.resolveRequestMessageType(content);
-        if (StringUtils.isEmpty(type)) {
-            return "";
-        }
-        //3.处理的逻辑交给weixinMessageService
-        return weixinMessageService.handleWeixinMessage(content, type);
+
+        //2.处理的逻辑交给weixinMessageService
+        return weixinMessageService.handleWeixinMessage(content);
     }
 
 

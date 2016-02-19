@@ -12,10 +12,10 @@ public interface WeixinResponseService {
     /**
      * 匹配消息,是否满足该service来处理
      *
-     * @param type
+     * @param messageContent
      * @return
      */
-    boolean matches(String  type);
+    boolean matches(String  messageContent);
 
     /**
      * 处理此消息

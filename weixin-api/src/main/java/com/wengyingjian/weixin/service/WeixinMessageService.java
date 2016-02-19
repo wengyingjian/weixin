@@ -20,15 +20,15 @@ public class WeixinMessageService {
     private List<WeixinResponseService> responseServiceList;
 
 
-    public String handleWeixinMessage(String content, String type) {
+    public String handleWeixinMessage(String content) {
 
         //遍历所有的实现类,用匹配的
         for (WeixinResponseService responseService : responseServiceList) {
-            if (responseService.matches(type)) {
+            if (responseService.matches(content)) {
                 return responseService.handleMessage(content);
             }
         }
-        logger.error("type [{}] for message not found, use default ",type);
+        logger.error(" message [{}] not found, use default ", content);
         return "";
     }
 }

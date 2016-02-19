@@ -2,6 +2,7 @@ package com.wengyingjian.weixin.service.impl;
 
 import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
 import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
+import com.wengyingjian.kylin.util.JsonUtil;
 import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.turing.common.model.TuringRequestMessage;
 import com.wengyingjian.turing.common.model.generic.TuringResponseGereralMessage;
@@ -11,6 +12,8 @@ import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
 import com.wengyingjian.weixin.common.model.WeixinResponseTextMessage;
 import com.wengyingjian.weixin.common.service.WeixinTextResponseService;
 import com.wengyingjian.weixin.filter.generic.WeixinInterceptor;
+import com.wengyingjian.weixin.service.TuringResolver;
+import com.wengyingjian.weixin.util.WeixinMessageResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +32,14 @@ public class WeixinTextResponseServiceImpl implements WeixinTextResponseService 
     private List<WeixinInterceptor> weixinInterceptorList;
     @Autowired
     private TuringService turingService;
+    @Autowired
+    private TuringResolver turingResolver;
+
 
     @Override
-    public boolean matches(String type) {
-        logger.debug("WeixinTextResponseService match type = [{}]", type);
+    public boolean matches(String requestContent) {
+        String type = WeixinMessageResolver.resolveRequestMessageType(requestContent);
+        logger.info("WeixinTextResponseService match type = [{}]", type);
         return WeixinRequestMessageType.DEFAULT_TEXT.getType().equals(type) ? true : false;
     }
 
@@ -71,7 +78,8 @@ public class WeixinTextResponseServiceImpl implements WeixinTextResponseService 
         turingRequestMessage.setUserid(weixinRequstTextMessage.getFromUserName());
         turingRequestMessage.setInfo(weixinRequstTextMessage.getContent());
         TuringResponseGereralMessage turingResponseGereralMessage = turingService.chat(turingRequestMessage);
-        return turingResponseGereralMessage.getText();
+        logger.info("turingResponseGereralMessage:{}", JsonUtil.getJsonFromObject(turingResponseGereralMessage));
+        return turingResolver.resolveResponse(turingResponseGereralMessage);
     }
 
 }
