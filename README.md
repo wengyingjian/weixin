@@ -11,7 +11,7 @@
 
 ### weixin-* 模块
 包含 微信 接口\公用类\服务 模块
-#### weixin-api
+#### weixin-api:接口
 两个接口,使用相同的url:Get用于接收微信token验证\Post用于接收公众号消息  
 
 **扩展:**
@@ -22,8 +22,8 @@
 自动调用`matches`方法,如果匹配上,则调用`handleMessage`方法进行消息处理.
 具体的消息类型参见微信文档:
 [http://mp.weixin.qq.com/wiki/home/index.html](http://mp.weixin.qq.com/wiki/home/index.html)
-#### weixin-common
-#### weixin-service
+#### weixin-common:公用类
+#### weixin-service:服务
 主要是`com.wengyingjian.weixin.common.service.generic.WeixinResponseService`实现类
 目前完成了两种消息的处理方案:
 订阅消息:`com.wengyingjian.weixin.service.impl.WeixinSubscribeResponseServiceImpl`
