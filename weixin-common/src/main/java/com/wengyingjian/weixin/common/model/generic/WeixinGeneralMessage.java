@@ -1,4 +1,4 @@
-package com.wengyingjian.turing.common.model.generic;
+package com.wengyingjian.weixin.common.model.generic;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

@@ -1,16 +1,15 @@
-package com.wengyingjian.turing.common.model;
+package com.wengyingjian.weixin.common.model.query;
 
-import java.io.Serializable;
+import com.wengyingjian.kylin.common.model.query.PageQuery;
+
 
 /**
  * Created by wengyingjian on 16/2/1.
  */
-public class User implements Serializable {
+public class UserQuery extends PageQuery {
 
     private Integer id;
-
     private String userName;
-
     private Integer userType;
 
     public Integer getId() {
