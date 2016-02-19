@@ -16,27 +16,27 @@
 
 **扩展:**
 
-对于各种类型的消息,可以自由选择\替换消息的处理器.  
-只要消息的处理器实现了`com.wengyingjian.weixin.common.service.generic.WeixinResponseService`接口,
-并且在`com.wengyingjian.weixin.ApiApp`类中声明即可.
-自动调用`matches`方法,如果匹配上,则调用`handleMessage`方法进行消息处理.
-具体的消息类型参见微信文档:
-[http://mp.weixin.qq.com/wiki/home/index.html](http://mp.weixin.qq.com/wiki/home/index.html)
+对于各种类型的消息,可以自由选择\替换消息的处理器.    
+只要消息的处理器实现了`com.wengyingjian.weixin.common.service.generic.WeixinResponseService`接口,  
+并且在`com.wengyingjian.weixin.ApiApp`类中声明即可.  
+自动调用`matches`方法,如果匹配上,则调用`handleMessage`方法进行消息处理.  
+具体的消息类型参见微信文档:  
+[http://mp.weixin.qq.com/wiki/home/index.html](http://mp.weixin.qq.com/wiki/home/index.html)  
 #### weixin-common:公用类
 #### weixin-service:服务
-主要是`com.wengyingjian.weixin.common.service.generic.WeixinResponseService`实现类
-目前完成了两种消息的处理方案:
-订阅消息:`com.wengyingjian.weixin.service.impl.WeixinSubscribeResponseServiceImpl`
-文本消息:`com.wengyingjian.weixin.service.impl.WeixinTextResponseServiceImpl`
-
-**文本消息扩展:**  
-
-文本消息提供消息关键字过滤扩展功能.
-在`com.wengyingjian.weixin.filter`包下,只需实现了`com.wengyingjian.weixin.filter.generic.WeixinInterceptor`接口,
-并且注册为bean,即可由默认的文本消息处理器自动过滤.
-首先调用`filter`方法查看是否满足过滤条件,如果满足,则调用`intercept`方法将消息进行拦截,在此处进行回复.
-
-**默认的回复规则:**
-
-如果关键字匹配没有命中,则使用默认的回复方式: 调用图灵机器人的聊天功能
+主要是`com.wengyingjian.weixin.common.service.generic.WeixinResponseService`实现类  
+目前完成了两种消息的处理方案:  
+订阅消息:`com.wengyingjian.weixin.service.impl.WeixinSubscribeResponseServiceImpl`  
+文本消息:`com.wengyingjian.weixin.service.impl.WeixinTextResponseServiceImpl`  
+  
+**文本消息扩展:**   
+  
+文本消息提供消息关键字过滤扩展功能.  
+在`com.wengyingjian.weixin.filter`包下,只需实现了`com.wengyingjian.weixin.filter.generic.WeixinInterceptor`接口,  
+并且注册为bean,即可由默认的文本消息处理器自动过滤.  
+首先调用`filter`方法查看是否满足过滤条件,如果满足,则调用`intercept`方法将消息进行拦截,在此处进行回复.  
+  
+**默认的回复规则:**  
+  
+如果关键字匹配没有命中,则使用默认的回复方式: 调用图灵机器人的聊天功能  
 
