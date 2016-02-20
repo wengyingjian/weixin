@@ -23,6 +23,7 @@
 
     <properties>
         <weixin.common.version>1.0-SNAPSHOT</weixin.common.version>
+        <weixin.service.version>1.0-SNAPSHOT</weixin.service.version>
         <turing.common.version>1.0-SNAPSHOT</turing.common.version>
     </properties>
 

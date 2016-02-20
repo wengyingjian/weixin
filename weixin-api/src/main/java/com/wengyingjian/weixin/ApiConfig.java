@@ -10,31 +10,31 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ApiConfig {
-
-    @Value("${service.weixin.url}")
-    private String weixinServiceUrl;
+//
+//    @Value("${service.weixin.url}")
+//    private String weixinServiceUrl;
     @Value("${service.turing.url}")
     private String turingServiceUrl;
+//
+//    @Value("${weixin.service.name.subscribe}")
+//    private String weixinSubscribeServiceName;
+//    @Value("${weixin.service.name.text}")
+//    private String weixinTextServiceName;
 
-    @Value("${weixin.service.name.subscribe}")
-    private String weixinSubscribeServiceName;
-    @Value("${weixin.service.name.text}")
-    private String weixinTextServiceName;
 
-
-    @Bean
-    public WeixinSubscribeResponseService weixinSubscribeResponseService() {
-        return WeixinSubscribeResponseService.class.cast(HessianProxyUtil.buildRemotingService(weixinServiceUrl,
-                weixinSubscribeServiceName,
-                WeixinSubscribeResponseService.class));
-    }
-
-    @Bean
-    public WeixinTextResponseService weixinTextResponseService() {
-        return WeixinTextResponseService.class.cast(HessianProxyUtil.buildRemotingService(weixinServiceUrl,
-                weixinTextServiceName,
-                WeixinTextResponseService.class));
-    }
+//    @Bean
+//    public WeixinSubscribeResponseService weixinSubscribeResponseService() {
+//        return WeixinSubscribeResponseService.class.cast(HessianProxyUtil.buildRemotingService(weixinServiceUrl,
+//                weixinSubscribeServiceName,
+//                WeixinSubscribeResponseService.class));
+//    }
+//
+//    @Bean
+//    public WeixinTextResponseService weixinTextResponseService() {
+//        return WeixinTextResponseService.class.cast(HessianProxyUtil.buildRemotingService(weixinServiceUrl,
+//                weixinTextServiceName,
+//                WeixinTextResponseService.class));
+//    }
 
 
     @Bean
