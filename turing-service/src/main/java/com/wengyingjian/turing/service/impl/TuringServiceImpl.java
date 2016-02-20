@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +22,7 @@ import java.util.Map;
 /**
  * Created by wengyingjian on 16/2/18.
  */
+@Service
 @RemoteService(serviceType = ServiceType.HESSIAN, serviceInterface = TuringService.class, exportPath = "/turingService")
 public class TuringServiceImpl implements TuringService {
 

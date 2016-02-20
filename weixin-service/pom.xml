@@ -2,15 +2,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--<parent>-->
+        <!--<groupId>com.wengyingjian.weixin</groupId>-->
+        <!--<artifactId>weixin</artifactId>-->
+        <!--<version>1.0-SNAPSHOT</version>-->
+    <!--</parent>-->
+
     <parent>
-        <groupId>com.wengyingjian.weixin</groupId>
-        <artifactId>weixin</artifactId>
+        <groupId>com.wengyingjian.kylin</groupId>
+        <artifactId>kylin-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>weixin-service</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
+
+    <properties>
+        <weixin.common.version>1.0-SNAPSHOT</weixin.common.version>
+        <turing.common.version>1.0-SNAPSHOT</turing.common.version>
+    </properties>
 
     <dependencies>
 
@@ -26,48 +37,48 @@
             <version>${turing.common.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.wengyingjian.kylin</groupId>
-            <artifactId>kylin-rpc-client</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.wengyingjian.kylin</groupId>-->
+            <!--<artifactId>kylin-rpc-client</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.wengyingjian.kylin</groupId>
             <artifactId>kylin-datasource</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.wengyingjian.kylin</groupId>
-            <artifactId>kylin-rpc-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.wengyingjian.kylin</groupId>-->
+            <!--<artifactId>kylin-rpc-server</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
     </dependencies>
 
 
-    <build>
-        <finalName>weixin-service</finalName>
-        <plugins>
-            <plugin>
-                <groupId>com.alibaba.citrus.tool</groupId>
-                <artifactId>autoconfig-maven-plugin</artifactId>
-                <version>1.2</version>
-                <configuration>
-                    <userProperties>build/${autoconfig.file}</userProperties>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>autoconfig</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+    <!--<build>-->
+        <!--<finalName>weixin-service</finalName>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>com.alibaba.citrus.tool</groupId>-->
+                <!--<artifactId>autoconfig-maven-plugin</artifactId>-->
+                <!--<version>1.2</version>-->
+                <!--<configuration>-->
+                    <!--<userProperties>build/${autoconfig.file}</userProperties>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>autoconfig</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
 
 </project>

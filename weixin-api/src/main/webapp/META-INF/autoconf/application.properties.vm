@@ -1,5 +1,9 @@
 service.weixin.url=${service.weixin.url}
 weixin.token=${weixin.token}
-
 weixin.service.name.subscribe   = ${weixin.service.name.subscribe}
 weixin.service.name.text        = ${weixin.service.name.text}
+
+
+service.turing.url = ${service.turing.url}
+shop.orange.url = ${shop.orange.url}
+weixin.subscribe.welcome.default = ${weixin.subscribe.welcome.default}

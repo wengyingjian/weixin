@@ -1,8 +1,8 @@
 package com.wengyingjian.weixin.service.impl;
 
 
-import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
-import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
+//import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
+//import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
 import com.wengyingjian.weixin.common.model.UserInfo;
 import com.wengyingjian.weixin.common.service.UserInfoService;
 import com.wengyingjian.weixin.dao.UserInfoDao;
@@ -15,7 +15,7 @@ import java.util.List;
  * Created by wengyingjian on 16/2/19.
  */
 @Service
-@RemoteService(serviceType = ServiceType.HESSIAN, serviceInterface = UserInfoService.class, exportPath = "/userInfoService")
+//@RemoteService(serviceType = ServiceType.HESSIAN, serviceInterface = UserInfoService.class, exportPath = "/userInfoService")
 public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired

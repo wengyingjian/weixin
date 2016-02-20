@@ -1,7 +1,7 @@
 package com.wengyingjian.weixin.service.impl;
 
-import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
-import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
+//import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
+//import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
 import com.wengyingjian.kylin.util.JsonUtil;
 import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.turing.common.model.TuringRequestMessage;
@@ -17,13 +17,15 @@ import com.wengyingjian.weixin.util.WeixinMessageResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by wengyingjian on 16/2/19.
  */
-@RemoteService(serviceType = ServiceType.HESSIAN, serviceInterface = WeixinTextResponseService.class, exportPath = "/defaultWeixinTextResponseService")
+@Service
+//@RemoteService(serviceType = ServiceType.HESSIAN, serviceInterface = WeixinTextResponseService.class, exportPath = "/defaultWeixinTextResponseService")
 public class WeixinTextResponseServiceImpl implements WeixinTextResponseService {
 
     Logger logger = LoggerFactory.getLogger(WeixinTextResponseServiceImpl.class);

@@ -12,7 +12,18 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <properties>
+        <weixin.common.version>1.0-SNAPSHOT</weixin.common.version>
+        <turing.common.version>1.0-SNAPSHOT</turing.common.version>
+    </properties>
+
     <dependencies>
+
+        <dependency>
+            <groupId>com.wengyingjian.weixin</groupId>
+            <artifactId>turing-common</artifactId>
+            <version>${turing.common.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.wengyingjian.weixin</groupId>

@@ -1,7 +1,7 @@
 package com.wengyingjian.weixin.service.impl;
 
-import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
-import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
+//import com.wengyingjian.kylin.rpc.server.annotation.RemoteService;
+//import com.wengyingjian.kylin.rpc.server.annotation.ServiceType;
 import com.wengyingjian.kylin.util.DateUtil;
 import com.wengyingjian.kylin.util.XmlUtil;
 import com.wengyingjian.weixin.common.enums.UserStatus;
@@ -9,19 +9,15 @@ import com.wengyingjian.weixin.common.enums.WeixinRequestEventMessageType;
 import com.wengyingjian.weixin.common.enums.WeixinRequestMessageType;
 import com.wengyingjian.weixin.common.model.UserInfo;
 import com.wengyingjian.weixin.common.model.WeixinRequestSubscribeMessage;
-import com.wengyingjian.weixin.common.model.WeixinRequstTextMessage;
 import com.wengyingjian.weixin.common.model.WeixinResponseTextMessage;
-import com.wengyingjian.weixin.common.model.generic.WeixinRequestEventMessage;
-import com.wengyingjian.weixin.common.model.generic.WeixinResponseMessage;
 import com.wengyingjian.weixin.common.service.SubscribeWelcomeService;
 import com.wengyingjian.weixin.common.service.UserInfoService;
 import com.wengyingjian.weixin.common.service.WeixinSubscribeResponseService;
-import com.wengyingjian.weixin.filter.generic.WeixinInterceptor;
 import com.wengyingjian.weixin.util.WeixinMessageResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -30,7 +26,8 @@ import java.util.List;
 /**
  * Created by wengyingjian on 16/2/19.
  */
-@RemoteService(serviceType = ServiceType.HESSIAN, serviceInterface = WeixinSubscribeResponseService.class, exportPath = "/defaultWeixinSubscribeResponseService")
+@Service
+//@RemoteService(serviceType = ServiceType.HESSIAN, serviceInterface = WeixinSubscribeResponseService.class, exportPath = "/defaultWeixinSubscribeResponseService")
 public class WeixinSubscribeResponseServiceImpl implements WeixinSubscribeResponseService {
 
     private Logger logger = LoggerFactory.getLogger(WeixinSubscribeResponseServiceImpl.class);

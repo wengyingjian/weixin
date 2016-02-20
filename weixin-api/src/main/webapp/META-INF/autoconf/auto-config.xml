@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <group>
-        <property name="service.weixin.url" defaultValue="http://localhost:8080/weixin-service/" description="weixin service url"/>
+        <property name="service.weixin.url" defaultValue="http://localhost:8080/weixin-service/"
+                  description="weixin service url"/>
         <property name="weixin.token" description="weixin token"/>
         <property name="weixin.service.name.subscribe" defaultValue="defaultWeixinSubscribeResponseService"
                   description="微信订阅消息处理器"/>
         <property name="weixin.service.name.text" defaultValue="defaultWeixinTextResponseService"
                   description="微信文本消息处理器"/>
+
+
+        <property name="service.turing.url" defaultValue="http://localhost:8080/turing-service/"
+                  description="turing service url"/>
+        <property name="shop.orange.url" description="店铺url"/>
+        <property name="weixin.subscribe.welcome.default" description="微信订阅欢迎"/>
     </group>
 
     <script>
