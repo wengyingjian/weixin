@@ -3,7 +3,7 @@
     <group>
         <property name="service.turing.url" defaultValue="http://localhost:8080/turing-service/" description="turing service url" />
         <property name="shop.orange.url"  description="店铺url" />
-        <property name="weixin.subscribe.welcome"  description="微信订阅欢迎" />
+        <property name="weixin.subscribe.welcome.default"  description="微信订阅欢迎" />
     </group>
 
     <script>

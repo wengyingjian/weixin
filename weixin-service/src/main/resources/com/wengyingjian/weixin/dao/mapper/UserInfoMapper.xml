@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wengyingjian.weixin.dao.mapper.UserInfoMapper">
+
+    <resultMap id="userMap" type="com.wengyingjian.weixin.common.model.UserInfo">
+        <id column="id" property="id"/>
+        <result column="uid" property="uid"/>
+        <result column="status" property="status"/>
+        <result column="location" property="location"/>
+        <result column="subscribe_time" property="subscribeTime"/>
+        <result column="unsubscribe_time" property="unSubscribeTime"/>
+    </resultMap>
+
+    <sql id="base_Column_List">
+        id,uid,status,location,subscribe_time,unsubscribe_time
+    </sql>
+
+    <select id="select" resultMap="userMap" parameterType="com.wengyingjian.weixin.common.model.UserInfo">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM user_info
+        <where>
+            <if test="id != null">
+                id = #{ id }
+            </if>
+            <if test="uid != null">
+                AND uid = #{ uid }
+            </if>
+            <if test="status != null">
+                AND status = #{ status }
+            </if>
+            <if test="location != null">
+                AND location = #{ location }
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertSelective" parameterType="com.wengyingjian.weixin.common.model.UserInfo">
+        INSERT INTO user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="location != null">
+                location,
+            </if>
+            <if test="subscribeTime != null">
+                subscribe_time,
+            </if>
+            <if test="unSubscribeTime != null">
+                unsubscribe_time,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{ id },
+            </if>
+            <if test="uid != null">
+                #{ uid },
+            </if>
+            <if test="status != null">
+                #{ status },
+            </if>
+            <if test="location != null">
+                #{ location },
+            </if>
+            <if test="subscribeTime != null">
+                #{ subscribeTime },
+            </if>
+            <if test="unSubscribeTime != null">
+                #{ unSubscribeTime },
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.wengyingjian.weixin.common.model.UserInfo">
+        UPDATE user_info
+        <set>
+            <if test="status != null">
+                status =#{ status },
+            </if>
+            <if test="location != null">
+                location=#{location},
+            </if>
+            <if test="subscribeTime != null">
+                subscribe_time = #{ subscribeTime },
+            </if>
+            <if test="unSubscribeTime != null">
+                unsubscribe_time = #{ unSubscribeTime },
+            </if>
+        </set>
+        WHERE id = #{ id }
+    </update>
+
+
+</mapper>

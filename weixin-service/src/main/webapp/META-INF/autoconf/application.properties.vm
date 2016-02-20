@@ -1,4 +1,4 @@
 service.turing.url = ${service.turing.url}
 shop.orange.url = ${shop.orange.url}
 
-weixin.subscribe.welcome = ${weixin.subscribe.welcome}
+weixin.subscribe.welcome.default = ${weixin.subscribe.welcome.default}

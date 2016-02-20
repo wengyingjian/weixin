@@ -14,6 +14,8 @@ import java.util.List;
 public class SubscribeWelcomeDao {
     @Autowired
     private SubscribeWelcomeMapper slaveSubscribeWelcomeMapper;
+    @Autowired
+    private SubscribeWelcomeMapper masterSubscribeWelcomeMapper;
 
     public List<SubscribeWelcome> selectEffective() {
         return slaveSubscribeWelcomeMapper.selectEffective();
